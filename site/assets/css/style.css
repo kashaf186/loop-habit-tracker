@@ -1,0 +1,103 @@
+/* Loop — shared design tokens & helpers
+   Palette: paper #FAF9F6, ink #1C2B2E, amber #C98A2C, sage #6B8F71
+   Type: Fraunces (display) + Inter (body)
+*/
+
+:root {
+  --paper: #faf9f6;
+  --paper-dim: #f1efe8;
+  --ink: #1c2b2e;
+  --ink-soft: #46595c;
+  --amber: #c98a2c;
+  --amber-dark: #a56f1f;
+  --sage: #6b8f71;
+  --sage-dark: #52704f;
+  --line: #e3ded2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: "Fraunces", ui-serif, Georgia, serif;
+}
+
+/* subtle graph-paper texture used behind a couple of sections instead of a generic gradient wash */
+.paper-grid {
+  background-color: var(--paper-dim);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* streak-dot chain: recurring motif standing in for generic numbered badges,
+   since the content is a sequence of daily check-ins, not an arbitrary list */
+.streak-chain {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.streak-chain .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--line);
+}
+.streak-chain .dot.lit {
+  background: var(--amber);
+}
+.streak-chain .bar {
+  width: 18px;
+  height: 1px;
+  background: var(--line);
+}
+
+/* visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* mobile nav */
+.nav-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+.nav-panel.open {
+  max-height: 480px;
+}
+
+/* accordion chevron rotation (About & Contact accordions) */
+.acc-trigger[aria-expanded="true"] .acc-chevron {
+  transform: rotate(180deg);
+}
+.acc-chevron {
+  transition: transform 0.2s ease;
+}
+.acc-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign In — Loop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: "#faf9f6", paperdim: "#f1efe8", ink: "#1c2b2e", inksoft: "#46595c",
+          amber: "#c98a2c", amberdark: "#a56f1f", sage: "#6b8f71", sagedark: "#52704f", line: "#e3ded2",
+        },
+        fontFamily: { display: ["Fraunces", "serif"], sans: ["Inter", "sans-serif"] },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="../../assets/css/style.css" />
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+
+<!-- Navbar -->
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-line">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2">
+      <span class="streak-chain"><span class="dot lit"></span><span class="bar"></span><span class="dot lit"></span><span class="bar"></span><span class="dot"></span></span>
+      <span class="font-display text-xl">Loop</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-inksoft">
+      <a href="../../index.html" class="hover:text-ink">Home</a>
+      <a href="about.html" class="hover:text-ink">About</a>
+      <a href="contact.html" class="hover:text-ink">Contact</a>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <a href="signin.html" class="text-sm font-medium text-ink px-3 py-2">Sign In</a>
+      <a href="signup.html" class="text-sm font-semibold bg-ink text-paper px-4 py-2 rounded-full hover:bg-inksoft transition-colors">Sign Up</a>
+    </div>
+    <button id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" class="md:hidden p-2 -mr-2">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+  <div id="nav-panel" class="nav-panel md:hidden border-t border-line px-6">
+    <div class="flex flex-col gap-1 py-3 text-sm font-medium text-inksoft">
+      <a href="../../index.html" class="py-2">Home</a>
+      <a href="about.html" class="py-2">About</a>
+      <a href="contact.html" class="py-2">Contact</a>
+      <a href="signin.html" class="py-2 text-ink">Sign In</a>
+      <a href="signup.html" class="py-2 font-semibold text-ink">Sign Up</a>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-md mx-auto px-6 py-16">
+
+  <!-- Flowbite Alert (dismissible, error demo) -->
+  <div id="signin-error" class="hidden flex items-center p-4 mb-6 text-amberdark rounded-lg bg-amber/10 border border-amber/30 text-sm" role="alert">
+    <svg class="shrink-0 w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-11a1 1 0 112 0v4a1 1 0 11-2 0V7zm1 8a1.25 1.25 0 100-2.5A1.25 1.25 0 0010 15z" clip-rule="evenodd"/></svg>
+    <span class="ms-3 font-medium">Please fill in every field correctly to continue.</span>
+    <button type="button" onclick="document.getElementById('signin-error').classList.add('hidden')" class="ms-auto -mx-1.5 -my-1.5 rounded-lg p-1.5 inline-flex h-8 w-8 hover:bg-amber/20" aria-label="Close">
+      <svg class="w-3 h-3" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l12 12M13 1L1 13"/></svg>
+    </button>
+  </div>
+
+  <!-- Flowbite success alert -->
+  <div id="signin-success" class="hidden mb-6 p-4 rounded-lg bg-sage/10 border border-sage/30 text-sagedark text-sm" role="alert">
+    Signed in — welcome back. (This is a course demo; no real account is accessed.)
+  </div>
+
+  <!-- Flowbite Card -->
+  <div class="border border-line rounded-2xl p-8 bg-white">
+    <h1 class="font-display text-3xl mb-2">Welcome back</h1>
+    <p class="text-inksoft text-sm mb-8">Pick up your streak where you left it.</p>
+
+    <form data-validate data-demo-only="true" data-success-target="signin-success" onsubmit="if(this.checkValidity()===false){document.getElementById('signin-error').classList.remove('hidden');}" class="space-y-5">
+
+      <!-- floating label input -->
+      <div class="relative">
+        <input type="email" id="si-email" name="email" required class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg focus:outline-none focus:border-ink placeholder-transparent" placeholder="Email" />
+        <label for="si-email" class="absolute text-inksoft text-sm left-4 top-2">Email address</label>
+        <p data-error-for="email" class="text-xs text-red-500 mt-1"></p>
+      </div>
+
+      <!-- floating label input -->
+      <div class="relative">
+        <input type="password" id="si-password" name="password" required class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg focus:outline-none focus:border-ink placeholder-transparent" placeholder="Password" />
+        <label for="si-password" class="absolute text-inksoft text-sm left-4 top-2">Password</label>
+        <p data-error-for="password" class="text-xs text-red-500 mt-1"></p>
+      </div>
+
+      <!-- checkbox: remember me -->
+      <div class="flex items-center justify-between">
+        <label class="flex items-center gap-2 text-sm text-inksoft">
+          <input type="checkbox" name="remember" class="rounded border-line text-ink focus:ring-ink" />
+          <span>Remember me</span>
+        </label>
+        <a href="contact.html" class="text-sm text-ink underline underline-offset-4">Forgot password?</a>
+      </div>
+
+      <!-- button -->
+      <button type="submit" class="w-full bg-ink text-paper font-semibold rounded-full py-3 hover:bg-inksoft transition-colors">Sign in</button>
+    </form>
+
+    <p class="text-center text-sm text-inksoft mt-8">Don't have an account? <a href="signup.html" class="text-ink font-semibold underline underline-offset-4">Sign up.</a></p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-ink text-paper/80 py-14">
+  <div class="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div>
+      <span class="font-display text-xl text-paper">Loop</span>
+      <p class="text-sm mt-3 max-w-[20ch]">A quiet calendar for the habits you're trying to keep.</p>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Site</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="../../index.html" class="hover:text-paper">Home</a></li>
+        <li><a href="about.html" class="hover:text-paper">About</a></li>
+        <li><a href="contact.html" class="hover:text-paper">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Account</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="signup.html" class="hover:text-paper">Sign Up</a></li>
+        <li><a href="signin.html" class="hover:text-paper">Sign In</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Assignment</p>
+      <p class="text-sm">Web Engineering — Assignment 01<br/>University of Lahore, Fall 2026</p>
+    </div>
+  </div>
+  <p class="text-center text-xs text-paper/50 mt-10">© 2026 Loop. Built as a course project — not a real product.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.1/flowbite.min.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

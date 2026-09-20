@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Loop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: "#faf9f6", paperdim: "#f1efe8", ink: "#1c2b2e", inksoft: "#46595c",
+          amber: "#c98a2c", amberdark: "#a56f1f", sage: "#6b8f71", sagedark: "#52704f", line: "#e3ded2",
+        },
+        fontFamily: { display: ["Fraunces", "serif"], sans: ["Inter", "sans-serif"] },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="../../assets/css/style.css" />
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+
+<!-- Navbar -->
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-line">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2">
+      <span class="streak-chain"><span class="dot lit"></span><span class="bar"></span><span class="dot lit"></span><span class="bar"></span><span class="dot"></span></span>
+      <span class="font-display text-xl">Loop</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-inksoft">
+      <a href="../../index.html" class="hover:text-ink">Home</a>
+      <a href="about.html" class="hover:text-ink">About</a>
+      <a href="contact.html" class="text-ink">Contact</a>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <a href="signin.html" class="text-sm font-medium text-inksoft hover:text-ink px-3 py-2">Sign In</a>
+      <a href="signup.html" class="text-sm font-semibold bg-ink text-paper px-4 py-2 rounded-full hover:bg-inksoft transition-colors">Sign Up</a>
+    </div>
+    <button id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" class="md:hidden p-2 -mr-2">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+  <div id="nav-panel" class="nav-panel md:hidden border-t border-line px-6">
+    <div class="flex flex-col gap-1 py-3 text-sm font-medium text-inksoft">
+      <a href="../../index.html" class="py-2">Home</a>
+      <a href="about.html" class="py-2">About</a>
+      <a href="contact.html" class="py-2 text-ink">Contact</a>
+      <a href="signin.html" class="py-2">Sign In</a>
+      <a href="signup.html" class="py-2 font-semibold text-ink">Sign Up</a>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-5xl mx-auto px-6 pt-16 pb-8">
+  <p class="text-sm font-semibold text-sage mb-4">get in touch</p>
+  <h1 class="font-display text-4xl md:text-5xl mb-4">Questions, bugs, or just a nice note?</h1>
+  <p class="text-lg text-inksoft max-w-xl">We read every message ourselves — there are three of us and no support queue to lose it in.</p>
+</section>
+
+<!-- Flowbite Alert (dismissible) -->
+<section class="max-w-5xl mx-auto px-6 mb-8">
+  <div id="contact-alert" class="hidden flex items-center p-4 mb-4 text-sagedark rounded-lg bg-sage/10 border border-sage/30" role="alert">
+    <svg class="shrink-0 w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+    <span class="ms-3 text-sm font-medium">Thanks — your message is on its way to us.</span>
+    <button type="button" onclick="document.getElementById('contact-alert').classList.add('hidden')" class="ms-auto -mx-1.5 -my-1.5 rounded-lg p-1.5 inline-flex h-8 w-8 hover:bg-sage/20" aria-label="Close">
+      <svg class="w-3 h-3" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l12 12M13 1L1 13"/></svg>
+    </button>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 pb-16 grid md:grid-cols-5 gap-10">
+
+  <!-- Flowbite Tabs -->
+  <div class="md:col-span-3">
+    <div class="mb-4 border-b border-line">
+      <ul class="flex flex-wrap -mb-px text-sm font-medium" data-tabs-toggle="#contact-tab-content" role="tablist">
+        <li role="presentation">
+          <button class="inline-block p-3 border-b-2 border-ink text-ink" id="general-tab" data-tabs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="true">General inquiry</button>
+        </li>
+        <li role="presentation">
+          <button class="inline-block p-3 border-b-2 border-transparent text-inksoft hover:text-ink" id="support-tab" data-tabs-target="#support" type="button" role="tab" aria-controls="support" aria-selected="false">Account support</button>
+        </li>
+      </ul>
+    </div>
+    <div id="contact-tab-content">
+      <div class="p-0" id="general" role="tabpanel" aria-labelledby="general-tab">
+        <p class="text-inksoft text-sm mb-6">Feedback, partnership ideas, press — anything that isn't "my account is stuck."</p>
+
+        <!-- Contact form, submits to Formspree -->
+        <form action="https://formspree.io/f/your-form-id" method="POST" data-validate class="space-y-5">
+          <input type="hidden" name="_subject" value="New message from Loop contact page — general" />
+
+          <div class="relative">
+            <input type="text" id="name" name="name" required class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg bg-white focus:outline-none focus:border-ink placeholder-transparent" placeholder="Full name" />
+            <label for="name" class="absolute text-inksoft text-sm left-4 top-2">Full name</label>
+            <p data-error-for="name" class="text-xs text-red-500 mt-1"></p>
+          </div>
+
+          <div class="relative">
+            <input type="email" id="email" name="email" required class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg bg-white focus:outline-none focus:border-ink placeholder-transparent" placeholder="Email" />
+            <label for="email" class="absolute text-inksoft text-sm left-4 top-2">Email address</label>
+            <p data-error-for="email" class="text-xs text-red-500 mt-1"></p>
+          </div>
+
+          <div class="relative">
+            <textarea id="message" name="message" required rows="5" class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg bg-white focus:outline-none focus:border-ink placeholder-transparent" placeholder="Message"></textarea>
+            <label for="message" class="absolute text-inksoft text-sm left-4 top-2">Message</label>
+            <p data-error-for="message" class="text-xs text-red-500 mt-1"></p>
+          </div>
+
+          <button type="submit" onclick="document.getElementById('contact-alert').classList.remove('hidden')" class="bg-ink text-paper font-semibold px-6 py-3 rounded-full hover:bg-inksoft transition-colors">Send message</button>
+          <p class="text-xs text-inksoft">Replace <code>your-form-id</code> in the form's action with your own Formspree form ID before deploying.</p>
+        </form>
+      </div>
+      <div class="hidden p-0" id="support" role="tabpanel" aria-labelledby="support-tab">
+        <p class="text-inksoft text-sm mb-6">Locked out, missing streak data, or a billing question on Plus — this goes straight to the person who can fix it.</p>
+        <form action="https://formspree.io/f/your-form-id" method="POST" data-validate class="space-y-5">
+          <input type="hidden" name="_subject" value="New message from Loop contact page — support" />
+          <div class="relative">
+            <input type="email" id="support-email" name="account_email" required class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg bg-white focus:outline-none focus:border-ink placeholder-transparent" placeholder="Account email" />
+            <label for="support-email" class="absolute text-inksoft text-sm left-4 top-2">Account email</label>
+            <p data-error-for="account_email" class="text-xs text-red-500 mt-1"></p>
+          </div>
+          <div class="relative">
+            <textarea id="support-message" name="message" required rows="5" class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg bg-white focus:outline-none focus:border-ink placeholder-transparent" placeholder="What's going on?"></textarea>
+            <label for="support-message" class="absolute text-inksoft text-sm left-4 top-2">What's going on?</label>
+            <p data-error-for="message" class="text-xs text-red-500 mt-1"></p>
+          </div>
+          <button type="submit" onclick="document.getElementById('contact-alert').classList.remove('hidden')" class="bg-ink text-paper font-semibold px-6 py-3 rounded-full hover:bg-inksoft transition-colors">Send to support</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flowbite Card + Tooltip -->
+  <div class="md:col-span-2 space-y-6">
+    <div class="border border-line rounded-2xl p-6 bg-white">
+      <div class="flex items-center gap-2 mb-4">
+        <h3 class="font-display text-xl">Direct lines</h3>
+        <button data-tooltip-target="response-tooltip" type="button" class="text-inksoft" aria-label="Response time info">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10A8 8 0 11 2 10a8 8 0 0116 0zM9 8a1 1 0 112 0v5a1 1 0 11-2 0V8zm1-4a1.25 1.25 0 100 2.5A1.25 1.25 0 0010 4z" clip-rule="evenodd"/></svg>
+        </button>
+        <div id="response-tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-paper bg-ink rounded-lg opacity-0 tooltip">
+          We usually reply within one business day.
+        </div>
+      </div>
+      <ul class="space-y-3 text-sm text-inksoft">
+        <li><span class="text-ink font-medium">Email —</span> hello@loop-app.example</li>
+        <li><span class="text-ink font-medium">Campus office —</span> Student Innovation Hub, Room 214</li>
+        <li><span class="text-ink font-medium">Hours —</span> Mon–Fri, 10am–5pm</li>
+      </ul>
+    </div>
+
+    <!-- Flowbite Accordion -->
+    <div id="contact-accordion" data-accordion="collapse" class="border border-line rounded-2xl overflow-hidden bg-white">
+      <h2>
+        <button type="button" class="flex items-center justify-between w-full p-4 text-left font-semibold border-b border-line" data-accordion-target="#ca-body-1" aria-expanded="false" aria-controls="ca-body-1">
+          <span>How fast will I hear back?</span>
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </h2>
+      <div id="ca-body-1" class="hidden">
+        <p class="p-4 text-sm text-inksoft border-b border-line">Usually within a day. During exam season it can stretch to two or three — we're students too.</p>
+      </div>
+      <h2>
+        <button type="button" class="flex items-center justify-between w-full p-4 text-left font-semibold" data-accordion-target="#ca-body-2" aria-expanded="false" aria-controls="ca-body-2">
+          <span>Can I request a feature?</span>
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </h2>
+      <div id="ca-body-2" class="hidden">
+        <p class="p-4 text-sm text-inksoft">Always — the general inquiry form is the fastest way to reach the people who build it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-ink text-paper/80 py-14">
+  <div class="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div>
+      <span class="font-display text-xl text-paper">Loop</span>
+      <p class="text-sm mt-3 max-w-[20ch]">A quiet calendar for the habits you're trying to keep.</p>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Site</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="../../index.html" class="hover:text-paper">Home</a></li>
+        <li><a href="about.html" class="hover:text-paper">About</a></li>
+        <li><a href="contact.html" class="hover:text-paper">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Account</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="signup.html" class="hover:text-paper">Sign Up</a></li>
+        <li><a href="signin.html" class="hover:text-paper">Sign In</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Assignment</p>
+      <p class="text-sm">Web Engineering — Assignment 01<br/>University of Lahore, Fall 2026</p>
+    </div>
+  </div>
+  <p class="text-center text-xs text-paper/50 mt-10">© 2026 Loop. Built as a course project — not a real product.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.1/flowbite.min.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

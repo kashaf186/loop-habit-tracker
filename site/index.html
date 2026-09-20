@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Loop — Build habits you actually keep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: "#faf9f6",
+          paperdim: "#f1efe8",
+          ink: "#1c2b2e",
+          inksoft: "#46595c",
+          amber: "#c98a2c",
+          amberdark: "#a56f1f",
+          sage: "#6b8f71",
+          sagedark: "#52704f",
+          line: "#e3ded2",
+        },
+        fontFamily: {
+          display: ["Fraunces", "serif"],
+          sans: ["Inter", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+
+<!-- Navbar -->
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-line">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <span class="streak-chain"><span class="dot lit"></span><span class="bar"></span><span class="dot lit"></span><span class="bar"></span><span class="dot"></span></span>
+      <span class="font-display text-xl">Loop</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-inksoft">
+      <a href="index.html" class="text-ink">Home</a>
+      <a href="src/pages/about.html" class="hover:text-ink">About</a>
+      <a href="src/pages/contact.html" class="hover:text-ink">Contact</a>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <a href="src/pages/signin.html" class="text-sm font-medium text-inksoft hover:text-ink px-3 py-2">Sign In</a>
+      <a href="src/pages/signup.html" class="text-sm font-semibold bg-ink text-paper px-4 py-2 rounded-full hover:bg-inksoft transition-colors">Sign Up</a>
+    </div>
+    <button id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" class="md:hidden p-2 -mr-2">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+  <div id="nav-panel" class="nav-panel md:hidden border-t border-line px-6">
+    <div class="flex flex-col gap-1 py-3 text-sm font-medium text-inksoft">
+      <a href="index.html" class="py-2 text-ink">Home</a>
+      <a href="src/pages/about.html" class="py-2">About</a>
+      <a href="src/pages/contact.html" class="py-2">Contact</a>
+      <a href="src/pages/signin.html" class="py-2">Sign In</a>
+      <a href="src/pages/signup.html" class="py-2 font-semibold text-ink">Sign Up</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="max-w-6xl mx-auto px-6 pt-16 pb-20 grid md:grid-cols-2 gap-12 items-center">
+  <div>
+    <p class="text-sm font-semibold text-sage tracking-wide mb-4">for students who keep starting over</p>
+    <h1 class="font-display text-5xl md:text-6xl leading-[1.05] mb-6">A habit isn't a goal. It's a mark on a page, made daily.</h1>
+    <p class="text-lg text-inksoft mb-8 max-w-md">Loop is a quiet place to log the things you're trying to keep doing — studying, sleeping on time, showing up — one check-in at a time.</p>
+    <div class="flex flex-wrap items-center gap-4">
+      <a href="src/pages/signup.html" class="bg-amber text-paper font-semibold px-6 py-3 rounded-full hover:bg-amberdark transition-colors">Start your first streak</a>
+      <a href="src/pages/about.html" class="font-semibold text-ink underline underline-offset-4 decoration-line hover:decoration-ink">See how it works</a>
+    </div>
+  </div>
+  <div class="relative">
+    <div class="bg-paperdim border border-line rounded-3xl p-6 shadow-sm">
+      <p class="font-display text-lg mb-4">This week</p>
+      <div class="grid grid-cols-7 gap-2 mb-4">
+        <span class="text-xs text-inksoft text-center">M</span><span class="text-xs text-inksoft text-center">T</span><span class="text-xs text-inksoft text-center">W</span><span class="text-xs text-inksoft text-center">T</span><span class="text-xs text-inksoft text-center">F</span><span class="text-xs text-inksoft text-center">S</span><span class="text-xs text-inksoft text-center">S</span>
+        <span class="h-9 rounded-lg bg-amber"></span><span class="h-9 rounded-lg bg-amber"></span><span class="h-9 rounded-lg bg-amber"></span><span class="h-9 rounded-lg bg-amber"></span><span class="h-9 rounded-lg bg-sage"></span><span class="h-9 rounded-lg border-2 border-dashed border-line"></span><span class="h-9 rounded-lg border-2 border-dashed border-line"></span>
+      </div>
+      <div class="flex items-center justify-between border-t border-line pt-4">
+        <div>
+          <p class="text-2xl font-display">12 days</p>
+          <p class="text-xs text-inksoft">current streak · Deep Work</p>
+        </div>
+        <span class="streak-chain"><span class="dot lit"></span><span class="dot lit"></span><span class="dot lit"></span><span class="dot lit"></span><span class="dot"></span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Where people use it -->
+<section class="border-y border-line bg-paperdim py-10">
+  <div class="max-w-6xl mx-auto px-6">
+    <p class="text-center text-sm text-inksoft mb-6">Where streaks get kept</p>
+    <div class="flex flex-wrap justify-center gap-x-10 gap-y-3 text-inksoft font-display text-lg">
+      <span>Study groups</span><span>Gym crews</span><span>Book clubs</span><span>Late-night coders</span><span>Morning runners</span>
+    </div>
+  </div>
+</section>
+
+<!-- Feature grid -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <h2 class="font-display text-3xl mb-10 max-w-lg">Three ways Loop keeps you honest</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="border border-line rounded-2xl p-6 bg-white">
+      <div class="w-10 h-10 rounded-full bg-amber/15 flex items-center justify-center mb-4">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c98a2c" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="font-semibold text-lg mb-2">One tap check-in</h3>
+      <p class="text-inksoft text-sm">Mark today done in under two seconds — no forms, no journaling required unless you want to.</p>
+    </div>
+    <div class="border border-line rounded-2xl p-6 bg-white">
+      <div class="w-10 h-10 rounded-full bg-sage/15 flex items-center justify-center mb-4">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#52704f" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke-linecap="round"/></svg>
+      </div>
+      <h3 class="font-semibold text-lg mb-2">A calendar that remembers</h3>
+      <p class="text-inksoft text-sm">Every streak is laid out month by month, so a bad week is a gap, not a reason to quit.</p>
+    </div>
+    <div class="border border-line rounded-2xl p-6 bg-white">
+      <div class="w-10 h-10 rounded-full bg-ink/10 flex items-center justify-center mb-4">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1c2b2e" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="font-semibold text-lg mb-2">A five-minute Sunday review</h3>
+      <p class="text-inksoft text-sm">Loop asks what worked this week and quietly drops the habits you've clearly outgrown.</p>
+    </div>
+  </div>
+</section>
+
+<!-- How it works (streak-chain steps, since content is genuinely sequential) -->
+<section class="bg-paperdim py-20 border-y border-line">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="font-display text-3xl mb-12 max-w-lg">How a habit gets built here</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div>
+        <span class="streak-chain mb-4"><span class="dot lit"></span><span class="bar"></span><span class="dot"></span><span class="bar"></span><span class="dot"></span></span>
+        <h3 class="font-display text-xl mt-3 mb-2">Pick one thing</h3>
+        <p class="text-inksoft text-sm">Not five. One habit, named plainly — "read 10 pages," not "become a reader."</p>
+      </div>
+      <div>
+        <span class="streak-chain mb-4"><span class="dot lit"></span><span class="bar"></span><span class="dot lit"></span><span class="bar"></span><span class="dot"></span></span>
+        <h3 class="font-display text-xl mt-3 mb-2">Check in daily</h3>
+        <p class="text-inksoft text-sm">A tap when it's done. Loop never asks why it wasn't, only notices when it was.</p>
+      </div>
+      <div>
+        <span class="streak-chain mb-4"><span class="dot lit"></span><span class="bar"></span><span class="dot lit"></span><span class="bar"></span><span class="dot lit"></span></span>
+        <h3 class="font-display text-xl mt-3 mb-2">Watch the chain grow</h3>
+        <p class="text-inksoft text-sm">The streak becomes the reason to continue — most people outlast their own expectations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="max-w-6xl mx-auto px-6 py-20 grid sm:grid-cols-3 gap-8 text-center">
+  <div>
+    <p class="font-display text-4xl text-amber">2.4M</p>
+    <p class="text-inksoft text-sm mt-2">check-ins logged this term</p>
+  </div>
+  <div>
+    <p class="font-display text-4xl text-sage">61 days</p>
+    <p class="text-inksoft text-sm mt-2">average kept streak</p>
+  </div>
+  <div>
+    <p class="font-display text-4xl text-ink">18k</p>
+    <p class="text-inksoft text-sm mt-2">habits currently active</p>
+  </div>
+</section>
+
+<!-- Testimonial carousel -->
+<section class="bg-ink text-paper py-20">
+  <div class="max-w-3xl mx-auto px-6 text-center" data-carousel>
+    <div data-slide>
+      <p class="font-display text-2xl leading-relaxed mb-6">"I've quit four planners this year. Loop is the first thing that made a 6am gym habit feel boring instead of hard — which is exactly what I needed."</p>
+      <p class="text-sm text-paper/70">Hina R. — final year, Computer Science</p>
+    </div>
+    <div data-slide class="hidden">
+      <p class="font-display text-2xl leading-relaxed mb-6">"My study group uses Loop to keep each other honest during finals. Seeing everyone's chain unbroken is oddly the best motivation I've had."</p>
+      <p class="text-sm text-paper/70">Ahmed K. — second year, Software Engineering</p>
+    </div>
+    <div data-slide class="hidden">
+      <p class="font-display text-2xl leading-relaxed mb-6">"No streaks, no badges to hoard, no leaderboard to lose on a bad week. Just a calendar that tells the truth."</p>
+      <p class="text-sm text-paper/70">Sara M. — freelance designer</p>
+    </div>
+    <div class="flex items-center justify-center gap-4 mt-8">
+      <button data-prev aria-label="Previous testimonial" class="w-9 h-9 rounded-full border border-paper/30 flex items-center justify-center hover:bg-paper/10">←</button>
+      <button data-next aria-label="Next testimonial" class="w-9 h-9 rounded-full border border-paper/30 flex items-center justify-center hover:bg-paper/10">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <h2 class="font-display text-3xl mb-10 text-center">Plans that stay out of your way</h2>
+  <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+    <div class="border border-line rounded-2xl p-8">
+      <h3 class="font-display text-xl mb-1">Free</h3>
+      <p class="text-inksoft text-sm mb-6">For one habit at a time</p>
+      <p class="font-display text-3xl mb-6">$0</p>
+      <ul class="space-y-2 text-sm text-inksoft mb-8">
+        <li>· 1 active habit</li>
+        <li>· Daily check-ins</li>
+        <li>· 90-day calendar history</li>
+      </ul>
+      <a href="src/pages/signup.html" class="block text-center border border-ink text-ink font-semibold rounded-full py-3 hover:bg-ink hover:text-paper transition-colors">Get started</a>
+    </div>
+    <div class="border-2 border-amber rounded-2xl p-8 relative">
+      <span class="absolute -top-3 right-6 bg-amber text-paper text-xs font-semibold px-3 py-1 rounded-full">Most kept</span>
+      <h3 class="font-display text-xl mb-1">Plus</h3>
+      <p class="text-inksoft text-sm mb-6">For everything you're building</p>
+      <p class="font-display text-3xl mb-6">$4<span class="text-base font-sans text-inksoft">/mo</span></p>
+      <ul class="space-y-2 text-sm text-inksoft mb-8">
+        <li>· Unlimited habits</li>
+        <li>· Full history + Sunday review</li>
+        <li>· Shared streaks with a group</li>
+      </ul>
+      <a href="src/pages/signup.html" class="block text-center bg-amber text-paper font-semibold rounded-full py-3 hover:bg-amberdark transition-colors">Get started</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ accordion -->
+<section class="bg-paperdim border-y border-line py-20">
+  <div class="max-w-2xl mx-auto px-6">
+    <h2 class="font-display text-3xl mb-8">Questions people actually ask</h2>
+    <div class="divide-y divide-line border-t border-b border-line">
+      <div>
+        <button data-acc-trigger="faq1" aria-expanded="false" class="acc-trigger w-full flex items-center justify-between py-4 text-left font-semibold">
+          What happens if I miss a day?
+          <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="faq1" class="acc-panel">
+          <p class="text-inksoft text-sm pb-4">Nothing dramatic — the day shows as empty, your streak count resets, and Loop moves on. No lecture, no red banner.</p>
+        </div>
+      </div>
+      <div>
+        <button data-acc-trigger="faq2" aria-expanded="false" class="acc-trigger w-full flex items-center justify-between py-4 text-left font-semibold">
+          Can I track more than one habit on Free?
+          <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="faq2" class="acc-panel">
+          <p class="text-inksoft text-sm pb-4">Free covers one habit at a time on purpose — most people stick better with a single focus. Plus removes the limit.</p>
+        </div>
+      </div>
+      <div>
+        <button data-acc-trigger="faq3" aria-expanded="false" class="acc-trigger w-full flex items-center justify-between py-4 text-left font-semibold">
+          Is there a mobile app?
+          <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="faq3" class="acc-panel">
+          <p class="text-inksoft text-sm pb-4">Loop is a responsive web app, so it works from your phone's browser today — a native app is on the roadmap.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter band -->
+<section class="max-w-4xl mx-auto px-6 py-20 text-center">
+  <h2 class="font-display text-3xl mb-3">One email a week, on Sundays</h2>
+  <p class="text-inksoft mb-8">A short note on what habit science actually says — no growth-hacking, no urgency.</p>
+  <form class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+    <label for="newsletter-email" class="sr-only">Email address</label>
+    <input id="newsletter-email" type="email" placeholder="you@university.edu" class="flex-1 border border-line rounded-full px-5 py-3 bg-white focus:outline-none" />
+    <button type="submit" class="bg-ink text-paper font-semibold rounded-full px-6 py-3 hover:bg-inksoft transition-colors">Subscribe</button>
+  </form>
+</section>
+
+<!-- CTA banner -->
+<section class="bg-sage text-paper py-16">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="font-display text-3xl mb-4">Today is a fine day to start a streak of one.</h2>
+    <a href="src/pages/signup.html" class="inline-block bg-paper text-sagedark font-semibold px-7 py-3 rounded-full hover:bg-paperdim transition-colors">Create your account</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-ink text-paper/80 py-14">
+  <div class="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div>
+      <span class="font-display text-xl text-paper">Loop</span>
+      <p class="text-sm mt-3 max-w-[20ch]">A quiet calendar for the habits you're trying to keep.</p>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Site</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html" class="hover:text-paper">Home</a></li>
+        <li><a href="src/pages/about.html" class="hover:text-paper">About</a></li>
+        <li><a href="src/pages/contact.html" class="hover:text-paper">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Account</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="src/pages/signup.html" class="hover:text-paper">Sign Up</a></li>
+        <li><a href="src/pages/signin.html" class="hover:text-paper">Sign In</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Assignment</p>
+      <p class="text-sm">Web Engineering — Assignment 01<br/>University of Lahore, Fall 2026</p>
+    </div>
+  </div>
+  <p class="text-center text-xs text-paper/50 mt-10">© 2026 Loop. Built as a course project — not a real product.</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

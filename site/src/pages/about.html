@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Loop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: "#faf9f6", paperdim: "#f1efe8", ink: "#1c2b2e", inksoft: "#46595c",
+          amber: "#c98a2c", amberdark: "#a56f1f", sage: "#6b8f71", sagedark: "#52704f", line: "#e3ded2",
+        },
+        fontFamily: { display: ["Fraunces", "serif"], sans: ["Inter", "sans-serif"] },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="../../assets/css/style.css" />
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+
+<!-- Navbar -->
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-line">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2">
+      <span class="streak-chain"><span class="dot lit"></span><span class="bar"></span><span class="dot lit"></span><span class="bar"></span><span class="dot"></span></span>
+      <span class="font-display text-xl">Loop</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-inksoft">
+      <a href="../../index.html" class="hover:text-ink">Home</a>
+      <a href="about.html" class="text-ink">About</a>
+      <a href="contact.html" class="hover:text-ink">Contact</a>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <a href="signin.html" class="text-sm font-medium text-inksoft hover:text-ink px-3 py-2">Sign In</a>
+      <a href="signup.html" class="text-sm font-semibold bg-ink text-paper px-4 py-2 rounded-full hover:bg-inksoft transition-colors">Sign Up</a>
+    </div>
+    <button id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" class="md:hidden p-2 -mr-2">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+  <div id="nav-panel" class="nav-panel md:hidden border-t border-line px-6">
+    <div class="flex flex-col gap-1 py-3 text-sm font-medium text-inksoft">
+      <a href="../../index.html" class="py-2">Home</a>
+      <a href="about.html" class="py-2 text-ink">About</a>
+      <a href="contact.html" class="py-2">Contact</a>
+      <a href="signin.html" class="py-2">Sign In</a>
+      <a href="signup.html" class="py-2 font-semibold text-ink">Sign Up</a>
+    </div>
+  </div>
+</header>
+
+<!-- Page intro -->
+<section class="max-w-4xl mx-auto px-6 pt-16 pb-12">
+  <p class="text-sm font-semibold text-sage mb-4">about loop</p>
+  <h1 class="font-display text-4xl md:text-5xl leading-tight mb-6">We got tired of habit apps that felt like a second job.</h1>
+  <p class="text-lg text-inksoft max-w-2xl">Loop started as a shared spreadsheet between three students trying to survive finals season. It's still built on the same idea: a habit tracker should take less time than the habit itself.</p>
+</section>
+
+<!-- Timeline -->
+<section class="max-w-4xl mx-auto px-6 py-12 border-t border-line">
+  <h2 class="font-display text-2xl mb-10">How Loop got here</h2>
+  <ol class="relative border-l border-line pl-8 space-y-10">
+    <li>
+      <span class="absolute -left-[7px] w-3 h-3 rounded-full bg-amber"></span>
+      <p class="text-sm text-inksoft mb-1">Spring 2024</p>
+      <h3 class="font-semibold text-lg mb-1">A spreadsheet, three names, one column of checkmarks</h3>
+      <p class="text-inksoft text-sm">Started as a shared Google Sheet to keep each other honest during a brutal exam block.</p>
+    </li>
+    <li>
+      <span class="absolute -left-[7px] w-3 h-3 rounded-full bg-amber"></span>
+      <p class="text-sm text-inksoft mb-1">Fall 2024</p>
+      <h3 class="font-semibold text-lg mb-1">First working prototype</h3>
+      <p class="text-inksoft text-sm">Rebuilt the spreadsheet as a tiny web app so friends outside the group chat could join in.</p>
+    </li>
+    <li>
+      <span class="absolute -left-[7px] w-3 h-3 rounded-full bg-amber"></span>
+      <p class="text-sm text-inksoft mb-1">Summer 2025</p>
+      <h3 class="font-semibold text-lg mb-1">1,000 streaks kept</h3>
+      <p class="text-inksoft text-sm">Word spread across a few campuses; the calendar view became the whole product.</p>
+    </li>
+    <li>
+      <span class="absolute -left-[7px] w-3 h-3 rounded-full bg-sage"></span>
+      <p class="text-sm text-inksoft mb-1">Today</p>
+      <h3 class="font-semibold text-lg mb-1">Still three people, still one column of checkmarks</h3>
+      <p class="text-inksoft text-sm">Loop grew, but the rule stayed the same: if a feature doesn't help you show up tomorrow, it doesn't ship.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- Statistics -->
+<section class="bg-paperdim border-y border-line py-16">
+  <div class="max-w-4xl mx-auto px-6 grid sm:grid-cols-3 gap-8 text-center">
+    <div>
+      <p class="font-display text-4xl text-amber">3</p>
+      <p class="text-inksoft text-sm mt-2">people on the team</p>
+    </div>
+    <div>
+      <p class="font-display text-4xl text-sage">18k</p>
+      <p class="text-inksoft text-sm mt-2">habits tracked right now</p>
+    </div>
+    <div>
+      <p class="font-display text-4xl text-ink">0</p>
+      <p class="text-inksoft text-sm mt-2">investors we've had to please</p>
+    </div>
+  </div>
+</section>
+
+<!-- Team section -->
+<section class="max-w-4xl mx-auto px-6 py-16">
+  <h2 class="font-display text-2xl mb-10">Who's behind it</h2>
+  <div class="grid sm:grid-cols-3 gap-8">
+    <div class="text-center">
+      <div class="w-20 h-20 rounded-full bg-amber/20 mx-auto mb-4 flex items-center justify-center font-display text-2xl text-amberdark">Z</div>
+      <h3 class="font-semibold">Zara Iqbal</h3>
+      <p class="text-inksoft text-sm">Product &amp; design</p>
+    </div>
+    <div class="text-center">
+      <div class="w-20 h-20 rounded-full bg-sage/20 mx-auto mb-4 flex items-center justify-center font-display text-2xl text-sagedark">B</div>
+      <h3 class="font-semibold">Bilal Sheikh</h3>
+      <p class="text-inksoft text-sm">Engineering</p>
+    </div>
+    <div class="text-center">
+      <div class="w-20 h-20 rounded-full bg-ink/10 mx-auto mb-4 flex items-center justify-center font-display text-2xl text-ink">F</div>
+      <h3 class="font-semibold">Fatima Noor</h3>
+      <p class="text-inksoft text-sm">Community &amp; support</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="bg-ink text-paper py-16">
+  <div class="max-w-2xl mx-auto px-6 text-center">
+    <p class="font-display text-2xl leading-relaxed mb-6">"Loop is the only habit tracker I've kept open past the first week — mostly because it never made me feel bad about the weeks I didn't."</p>
+    <p class="text-sm text-paper/70">Junaid A. — beta user since 2024</p>
+  </div>
+</section>
+
+<!-- Accordion -->
+<section class="max-w-2xl mx-auto px-6 py-16">
+  <h2 class="font-display text-2xl mb-8">A few things people ask us</h2>
+  <div class="divide-y divide-line border-t border-b border-line">
+    <div>
+      <button data-acc-trigger="about-acc1" aria-expanded="false" class="acc-trigger w-full flex items-center justify-between py-4 text-left font-semibold">
+        Why is Loop free for one habit?
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div id="about-acc1" class="acc-panel">
+        <p class="text-inksoft text-sm pb-4">Because most habit change happens through focus, not tracking five things badly. We'd rather earn Plus subscribers than force the limit.</p>
+      </div>
+    </div>
+    <div>
+      <button data-acc-trigger="about-acc2" aria-expanded="false" class="acc-trigger w-full flex items-center justify-between py-4 text-left font-semibold">
+        Do you sell user data?
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div id="about-acc2" class="acc-panel">
+        <p class="text-inksoft text-sm pb-4">No. Loop is funded by Plus subscriptions, not advertising, so there's no reason to.</p>
+      </div>
+    </div>
+    <div>
+      <button data-acc-trigger="about-acc3" aria-expanded="false" class="acc-trigger w-full flex items-center justify-between py-4 text-left font-semibold">
+        Are you hiring?
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div id="about-acc3" class="acc-panel">
+        <p class="text-inksoft text-sm pb-4">Not right now — still just the three of us, on purpose. Reach out through the contact page and we'll keep your note on file.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-ink text-paper/80 py-14">
+  <div class="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div>
+      <span class="font-display text-xl text-paper">Loop</span>
+      <p class="text-sm mt-3 max-w-[20ch]">A quiet calendar for the habits you're trying to keep.</p>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Site</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="../../index.html" class="hover:text-paper">Home</a></li>
+        <li><a href="about.html" class="hover:text-paper">About</a></li>
+        <li><a href="contact.html" class="hover:text-paper">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Account</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="signup.html" class="hover:text-paper">Sign Up</a></li>
+        <li><a href="signin.html" class="hover:text-paper">Sign In</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Assignment</p>
+      <p class="text-sm">Web Engineering — Assignment 01<br/>University of Lahore, Fall 2026</p>
+    </div>
+  </div>
+  <p class="text-center text-xs text-paper/50 mt-10">© 2026 Loop. Built as a course project — not a real product.</p>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign Up — Loop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: "#faf9f6", paperdim: "#f1efe8", ink: "#1c2b2e", inksoft: "#46595c",
+          amber: "#c98a2c", amberdark: "#a56f1f", sage: "#6b8f71", sagedark: "#52704f", line: "#e3ded2",
+        },
+        fontFamily: { display: ["Fraunces", "serif"], sans: ["Inter", "sans-serif"] },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="../../assets/css/style.css" />
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+
+<!-- Navbar -->
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-line">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2">
+      <span class="streak-chain"><span class="dot lit"></span><span class="bar"></span><span class="dot lit"></span><span class="bar"></span><span class="dot"></span></span>
+      <span class="font-display text-xl">Loop</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-inksoft">
+      <a href="../../index.html" class="hover:text-ink">Home</a>
+      <a href="about.html" class="hover:text-ink">About</a>
+      <a href="contact.html" class="hover:text-ink">Contact</a>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <a href="signin.html" class="text-sm font-medium text-inksoft hover:text-ink px-3 py-2">Sign In</a>
+      <a href="signup.html" class="text-sm font-semibold bg-ink text-paper px-4 py-2 rounded-full">Sign Up</a>
+    </div>
+    <button id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" class="md:hidden p-2 -mr-2">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+  <div id="nav-panel" class="nav-panel md:hidden border-t border-line px-6">
+    <div class="flex flex-col gap-1 py-3 text-sm font-medium text-inksoft">
+      <a href="../../index.html" class="py-2">Home</a>
+      <a href="about.html" class="py-2">About</a>
+      <a href="contact.html" class="py-2">Contact</a>
+      <a href="signin.html" class="py-2">Sign In</a>
+      <a href="signup.html" class="py-2 font-semibold text-ink">Sign Up</a>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-md mx-auto px-6 py-16">
+
+  <!-- success alert, shown after demo submit -->
+  <div id="signup-success" class="hidden mb-6 p-4 rounded-lg bg-sage/10 border border-sage/30 text-sagedark text-sm">
+    Account created — welcome to Loop. (This is a course demo; no data is actually stored.)
+  </div>
+
+  <!-- Form card -->
+  <div class="border border-line rounded-2xl p-8 bg-white">
+    <h1 class="font-display text-3xl mb-2">Start your streak</h1>
+    <p class="text-inksoft text-sm mb-8">One habit, tracked properly, is worth more than five tracked badly.</p>
+
+    <form data-validate data-demo-only="true" data-success-target="signup-success" class="space-y-5">
+
+      <!-- input group: name -->
+      <div class="relative">
+        <input type="text" id="su-name" name="full_name" required class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg focus:outline-none focus:border-ink placeholder-transparent" placeholder="Full name" />
+        <label for="su-name" class="absolute text-inksoft text-sm left-4 top-2">Full name</label>
+        <p data-error-for="full_name" class="text-xs text-red-500 mt-1"></p>
+      </div>
+
+      <!-- input group: email -->
+      <div class="relative">
+        <input type="email" id="su-email" name="email" required class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg focus:outline-none focus:border-ink placeholder-transparent" placeholder="Email" />
+        <label for="su-email" class="absolute text-inksoft text-sm left-4 top-2">Email address</label>
+        <p data-error-for="email" class="text-xs text-red-500 mt-1"></p>
+      </div>
+
+      <!-- input group: password -->
+      <div class="relative">
+        <input type="password" id="su-password" name="password" required class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg focus:outline-none focus:border-ink placeholder-transparent" placeholder="Password" />
+        <label for="su-password" class="absolute text-inksoft text-sm left-4 top-2">Password</label>
+        <p data-error-for="password" class="text-xs text-red-500 mt-1"></p>
+      </div>
+
+      <!-- input group: confirm password -->
+      <div class="relative">
+        <input type="password" id="su-confirm" name="confirm_password" data-match="password" required class="peer block w-full px-4 pt-5 pb-2 border border-line rounded-lg focus:outline-none focus:border-ink placeholder-transparent" placeholder="Confirm password" />
+        <label for="su-confirm" class="absolute text-inksoft text-sm left-4 top-2">Confirm password</label>
+        <p data-error-for="confirm_password" class="text-xs text-red-500 mt-1"></p>
+      </div>
+
+      <!-- checkbox -->
+      <div>
+        <label class="flex items-start gap-3 text-sm text-inksoft">
+          <input type="checkbox" name="terms" required class="mt-1 rounded border-line text-ink focus:ring-ink" />
+          <span>I agree to the Terms of Service and Privacy Policy.</span>
+        </label>
+        <p data-error-for="terms" class="text-xs text-red-500 mt-1"></p>
+      </div>
+
+      <button type="submit" class="w-full bg-amber text-paper font-semibold rounded-full py-3 hover:bg-amberdark transition-colors">Create account</button>
+    </form>
+
+    <!-- divider + social buttons -->
+    <div class="flex items-center gap-3 my-6">
+      <span class="flex-1 h-px bg-line"></span>
+      <span class="text-xs text-inksoft">or continue with</span>
+      <span class="flex-1 h-px bg-line"></span>
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+      <button type="button" class="border border-line rounded-full py-2.5 text-sm font-medium hover:bg-paperdim transition-colors">Google</button>
+      <button type="button" class="border border-line rounded-full py-2.5 text-sm font-medium hover:bg-paperdim transition-colors">GitHub</button>
+    </div>
+
+    <p class="text-center text-sm text-inksoft mt-8">Already have an account? <a href="signin.html" class="text-ink font-semibold underline underline-offset-4">Sign in.</a></p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-ink text-paper/80 py-14">
+  <div class="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div>
+      <span class="font-display text-xl text-paper">Loop</span>
+      <p class="text-sm mt-3 max-w-[20ch]">A quiet calendar for the habits you're trying to keep.</p>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Site</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="../../index.html" class="hover:text-paper">Home</a></li>
+        <li><a href="about.html" class="hover:text-paper">About</a></li>
+        <li><a href="contact.html" class="hover:text-paper">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Account</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="signup.html" class="hover:text-paper">Sign Up</a></li>
+        <li><a href="signin.html" class="hover:text-paper">Sign In</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-paper font-semibold text-sm mb-3">Assignment</p>
+      <p class="text-sm">Web Engineering — Assignment 01<br/>University of Lahore, Fall 2026</p>
+    </div>
+  </div>
+  <p class="text-center text-xs text-paper/50 mt-10">© 2026 Loop. Built as a course project — not a real product.</p>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
